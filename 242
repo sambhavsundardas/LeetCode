@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if(s.size() != t.size()){
+            return false;
+        }
+        vector<int> Freq(26,0);
+        for(char c:s){
+            Freq[c-'a']++;
+        }
+        for(char c:t){
+            Freq[c-'a']--;
+        }
+        for(int count : Freq){
+            if(count != 0){
+                return false;
+            }
+        }
+        return true;
+    }
+};
