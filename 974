@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+        unordered_map<int,int> hi;
+
+        hi[0] = 1;
+        int sum = 0;
+        int count = 0;
+
+        for(int num:nums){
+            sum += num;
+            int remainder = sum % k;
+
+            if(remainder<0){
+                remainder += k;
+            }
+
+            if(hi.find(remainder) != hi.end()){
+                count += hi[remainder];
+            }
+            hi[remainder]++;
+        }
+        return count;
+    }
+};
